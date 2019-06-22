@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Cuentas_por_cobrarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BALANCE">
+          <Key>
+            <PropertyRef Name="ID_balance" />
+          </Key>
+          <Property Name="ID_cliente" Type="int" Nullable="false" />
+          <Property Name="Fecha_corte" Type="date" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+          <Property Name="ID_balance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_cliente" />
+          </Key>
+          <Property Name="ID_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="Limite_credito" Type="money" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="ID_documento" />
+          </Key>
+          <Property Name="ID_documento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRANSACCION">
+          <Key>
+            <PropertyRef Name="ID_transaccion" />
+          </Key>
+          <Property Name="ID_transaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo_movimiento" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="ID_documento" Type="int" Nullable="false" />
+          <Property Name="Num_documento" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="ID_cliente" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BALANCE_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="BALANCE" Type="Self.BALANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_cliente" />
+            </Principal>
+            <Dependent Role="BALANCE">
+              <PropertyRef Name="ID_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCION_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_cliente" />
+            </Principal>
+            <Dependent Role="TRANSACCION">
+              <PropertyRef Name="ID_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCION_TIPO_DOCUMENTO1">
+          <End Role="TIPO_DOCUMENTO" Type="Self.TIPO_DOCUMENTO" Multiplicity="1" />
+          <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_DOCUMENTO">
+              <PropertyRef Name="ID_documento" />
+            </Principal>
+            <Dependent Role="TRANSACCION">
+              <PropertyRef Name="ID_documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Cuentas_por_cobrarModelStoreContainer">
+          <EntitySet Name="BALANCE" EntityType="Self.BALANCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_DOCUMENTO" EntityType="Self.TIPO_DOCUMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BALANCE_CLIENTE" Association="Self.FK_BALANCE_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="BALANCE" EntitySet="BALANCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCION_CLIENTE" Association="Self.FK_TRANSACCION_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCION_TIPO_DOCUMENTO1" Association="Self.FK_TRANSACCION_TIPO_DOCUMENTO1">
+            <End Role="TIPO_DOCUMENTO" EntitySet="TIPO_DOCUMENTO" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Cuentas_por_cobrarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BALANCE">
+          <Key>
+            <PropertyRef Name="ID_balance" />
+          </Key>
+          <Property Name="ID_cliente" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_corte" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ID_balance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_BALANCE_CLIENTE" FromRole="BALANCE" ToRole="CLIENTE" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_cliente" />
+          </Key>
+          <Property Name="ID_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Limite_credito" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BALANCE" Relationship="Self.FK_BALANCE_CLIENTE" FromRole="CLIENTE" ToRole="BALANCE" />
+          <NavigationProperty Name="TRANSACCION" Relationship="Self.FK_TRANSACCION_CLIENTE" FromRole="CLIENTE" ToRole="TRANSACCION" />
+        </EntityType>
+        <EntityType Name="TIPO_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="ID_documento" />
+          </Key>
+          <Property Name="ID_documento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TRANSACCION" Relationship="Self.FK_TRANSACCION_TIPO_DOCUMENTO1" FromRole="TIPO_DOCUMENTO" ToRole="TRANSACCION" />
+        </EntityType>
+        <EntityType Name="TRANSACCION">
+          <Key>
+            <PropertyRef Name="ID_transaccion" />
+          </Key>
+          <Property Name="ID_transaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_movimiento" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_documento" Type="Int32" Nullable="false" />
+          <Property Name="Num_documento" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_cliente" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_TRANSACCION_CLIENTE" FromRole="TRANSACCION" ToRole="CLIENTE" />
+          <NavigationProperty Name="TIPO_DOCUMENTO" Relationship="Self.FK_TRANSACCION_TIPO_DOCUMENTO1" FromRole="TRANSACCION" ToRole="TIPO_DOCUMENTO" />
+        </EntityType>
+        <Association Name="FK_BALANCE_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="BALANCE" Type="Self.BALANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_cliente" />
+            </Principal>
+            <Dependent Role="BALANCE">
+              <PropertyRef Name="ID_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCION_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_cliente" />
+            </Principal>
+            <Dependent Role="TRANSACCION">
+              <PropertyRef Name="ID_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSACCION_TIPO_DOCUMENTO1">
+          <End Role="TIPO_DOCUMENTO" Type="Self.TIPO_DOCUMENTO" Multiplicity="1" />
+          <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_DOCUMENTO">
+              <PropertyRef Name="ID_documento" />
+            </Principal>
+            <Dependent Role="TRANSACCION">
+              <PropertyRef Name="ID_documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Cuentas_por_cobrarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BALANCE" EntityType="Self.BALANCE" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="TIPO_DOCUMENTO" EntityType="Self.TIPO_DOCUMENTO" />
+          <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" />
+          <AssociationSet Name="FK_BALANCE_CLIENTE" Association="Self.FK_BALANCE_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="BALANCE" EntitySet="BALANCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCION_CLIENTE" Association="Self.FK_TRANSACCION_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSACCION_TIPO_DOCUMENTO1" Association="Self.FK_TRANSACCION_TIPO_DOCUMENTO1">
+            <End Role="TIPO_DOCUMENTO" EntitySet="TIPO_DOCUMENTO" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Cuentas_por_cobrarModelStoreContainer" CdmEntityContainer="Cuentas_por_cobrarEntities">
+          <EntitySetMapping Name="BALANCE">
+            <EntityTypeMapping TypeName="Cuentas_por_cobrarModel.BALANCE">
+              <MappingFragment StoreEntitySet="BALANCE">
+                <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+                <ScalarProperty Name="Fecha_corte" ColumnName="Fecha_corte" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="ID_balance" ColumnName="ID_balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="Cuentas_por_cobrarModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Limite_credito" ColumnName="Limite_credito" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_DOCUMENTO">
+            <EntityTypeMapping TypeName="Cuentas_por_cobrarModel.TIPO_DOCUMENTO">
+              <MappingFragment StoreEntitySet="TIPO_DOCUMENTO">
+                <ScalarProperty Name="ID_documento" ColumnName="ID_documento" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACCION">
+            <EntityTypeMapping TypeName="Cuentas_por_cobrarModel.TRANSACCION">
+              <MappingFragment StoreEntitySet="TRANSACCION">
+                <ScalarProperty Name="ID_transaccion" ColumnName="ID_transaccion" />
+                <ScalarProperty Name="Tipo_movimiento" ColumnName="Tipo_movimiento" />
+                <ScalarProperty Name="ID_documento" ColumnName="ID_documento" />
+                <ScalarProperty Name="Num_documento" ColumnName="Num_documento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

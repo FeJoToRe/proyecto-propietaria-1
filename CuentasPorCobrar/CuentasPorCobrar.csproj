@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DFDB7E85-0A53-483E-A7F2-0016F43A250E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CuentasPorCobrar</RootNamespace>
+    <AssemblyName>CuentasPorCobrar</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BALANCE.cs">
+      <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CLIENTE.cs">
+      <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cuentas_por_cobrarEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuentas_por_cobrarEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cuentas_por_cobrarEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cuentas_por_cobrarEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cuentas_por_cobrarEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTipo_documento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipo_documento.Designer.cs">
+      <DependentUpon>FrmTipo_documento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransacciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransacciones.Designer.cs">
+      <DependentUpon>FrmTransacciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBalance.Designer.cs">
+      <DependentUpon>FrmBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion_clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion_clientes.Designer.cs">
+      <DependentUpon>Gestion_clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TIPO_DOCUMENTO.cs">
+      <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANSACCION.cs">
+      <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vista_Balance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_Balance.Designer.cs">
+      <DependentUpon>Vista_Balance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_cliente.Designer.cs">
+      <DependentUpon>Vista_cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista_documentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_documentos.Designer.cs">
+      <DependentUpon>Vista_documentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista_Transacciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_Transacciones.Designer.cs">
+      <DependentUpon>Vista_Transacciones.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipo_documento.resx">
+      <DependentUpon>FrmTipo_documento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransacciones.resx">
+      <DependentUpon>FrmTransacciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBalance.resx">
+      <DependentUpon>FrmBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion_clientes.resx">
+      <DependentUpon>Gestion_clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Vista_Balance.resx">
+      <DependentUpon>Vista_Balance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista_cliente.resx">
+      <DependentUpon>Vista_cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista_documentos.resx">
+      <DependentUpon>Vista_documentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista_Transacciones.resx">
+      <DependentUpon>Vista_Transacciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Cuentas_por_cobrarEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Cuentas_por_cobrarEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Cuentas_por_cobrarEntities.edmx.diagram">
+      <DependentUpon>Cuentas_por_cobrarEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cuentas_por_cobrarEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Cuentas_por_cobrarEntities.edmx</DependentUpon>
+      <LastGenOutput>Cuentas_por_cobrarEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Cuentas_por_cobrarEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Cuentas_por_cobrarEntities.edmx</DependentUpon>
+      <LastGenOutput>Cuentas_por_cobrarEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
