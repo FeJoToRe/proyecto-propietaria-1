@@ -45,7 +45,9 @@
           <Property Name="Monto" Type="money" Nullable="false" />
         </EntityType>
         <Association Name="FK_BALANCE_CLIENTE">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="BALANCE" Type="Self.BALANCE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
@@ -57,7 +59,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TRANSACCION_CLIENTE">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
@@ -69,7 +73,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TRANSACCION_TIPO_DOCUMENTO1">
-          <End Role="TIPO_DOCUMENTO" Type="Self.TIPO_DOCUMENTO" Multiplicity="1" />
+          <End Role="TIPO_DOCUMENTO" Type="Self.TIPO_DOCUMENTO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPO_DOCUMENTO">
@@ -149,7 +155,9 @@
           <NavigationProperty Name="TIPO_DOCUMENTO" Relationship="Self.FK_TRANSACCION_TIPO_DOCUMENTO1" FromRole="TRANSACCION" ToRole="TIPO_DOCUMENTO" />
         </EntityType>
         <Association Name="FK_BALANCE_CLIENTE">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="BALANCE" Type="Self.BALANCE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
@@ -161,7 +169,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TRANSACCION_CLIENTE">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
@@ -173,7 +183,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TRANSACCION_TIPO_DOCUMENTO1">
-          <End Role="TIPO_DOCUMENTO" Type="Self.TIPO_DOCUMENTO" Multiplicity="1" />
+          <End Role="TIPO_DOCUMENTO" Type="Self.TIPO_DOCUMENTO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPO_DOCUMENTO">

@@ -24,11 +24,8 @@ namespace CuentasPorCobrar
         public int ID_documento { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
-
-		
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    [Browsable(false)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRANSACCION> TRANSACCION { get; set; }
-
-
     }
 }

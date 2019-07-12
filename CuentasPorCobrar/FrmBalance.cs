@@ -35,6 +35,12 @@ namespace CuentasPorCobrar
 		//guardar balance
 		private void SaveBalance_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrWhiteSpace(txtMontoBal.Text))
+			{
+				MessageBox.Show("Error: debe llenar los campos en blanco");
+				return;
+			}
+
 			if (balance == null)
 			{
 				balance = new BALANCE();//esto lo copie directo 

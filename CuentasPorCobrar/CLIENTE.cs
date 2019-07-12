@@ -11,8 +11,9 @@ namespace CuentasPorCobrar
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class CLIENTE
+	using System.ComponentModel;
+
+	public partial class CLIENTE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CLIENTE()
@@ -26,10 +27,11 @@ namespace CuentasPorCobrar
         public string Cedula { get; set; }
         public decimal Limite_credito { get; set; }
         public bool Estado { get; set; }
-    
+    [Browsable(false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BALANCE> BALANCE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+		[Browsable(false)]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRANSACCION> TRANSACCION { get; set; }
 
 		public override string ToString()

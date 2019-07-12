@@ -56,6 +56,29 @@ namespace CuentasPorCobrar
 				Vista_Balance_Load(sender, e);
 			}
 		}
-	}
+
+        private void buttonBuscarBalance_Click(object sender, EventArgs e)
+        {
+            IQueryable<CuentasPorCobrar.BALANCE> balances;
+            switch (cbxVistaBalance.SelectedItem.ToString())
+            {
+                case "ID cliente":
+                    balances = from balance in entities.BALANCE
+                               where balance.ID_cliente.ToString().Contains(txtBoxVistaBalance.Text)
+                               select balance;
+                    break;
+                case "ID balance":
+                    balances = from balance in entities.BALANCE
+                               where balance.ID_balance.ToString().Contains(txtBoxVistaBalance.Text)
+                               select balance;
+                    break;
+                default:
+                    balances = from balance in entities.BALANCE
+                               select balance;
+                    break;
+            }
+            this.dgvBalance.DataSource = balances.ToList();
+
+        }
+    }
 }
-//repite

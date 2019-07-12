@@ -58,5 +58,35 @@ namespace CuentasPorCobrar
 				Vista_cliente_Load(sender,e);
 			}
 		}
-	}
+        //busqueda por criterios clientes 
+
+            // para los demas criterios, cambiarle el campo del where y el case segun lo que se necesite
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+           IQueryable < CuentasPorCobrar.CLIENTE> clientes;
+            switch (cbxBuscar.SelectedItem.ToString()){
+                case "ID cliente":
+                clientes = from cliente in entities.CLIENTE
+                               where cliente.ID_cliente.ToString().Contains(textBoxBuscar.Text)
+                               select cliente;
+                    break;
+                case "Nombre":
+                    clientes = from cliente in entities.CLIENTE
+                               where cliente.Nombre.ToString().Contains(textBoxBuscar.Text)
+                               select cliente;
+                    break;
+                case "Cedula":
+                    clientes = from cliente in entities.CLIENTE
+                               where cliente.Cedula.ToString().Contains(textBoxBuscar.Text)
+                               select cliente;
+                    break;
+                default:
+                    clientes = from cliente in entities.CLIENTE
+                               select cliente;
+                    break;
+            }
+            this.DgvClientes.DataSource = clientes.ToList();
+
+        }
+    }
 }

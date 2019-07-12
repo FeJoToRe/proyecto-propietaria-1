@@ -55,5 +55,35 @@ namespace CuentasPorCobrar
 		{
 			DgvDocumentos.DataSource = entities.TIPO_DOCUMENTO.Select(x => x).ToArray(); 
 		}
-	}
+
+         
+
+        private void cbxVistaDocs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBuscarDocs_Click(object sender, EventArgs e)
+        {
+            IQueryable<CuentasPorCobrar.TIPO_DOCUMENTO> documentos;
+            switch (cbxVistaDocs.SelectedItem.ToString())
+            {
+                case "ID documento":
+                    documentos = from documento in entities.TIPO_DOCUMENTO
+                               where documento.ID_documento.ToString().Contains(textBoxVistaDocs.Text)
+                               select documento;
+                    break;
+                case "Descripcion":
+                    documentos = from documento in entities.TIPO_DOCUMENTO
+                               where documento.Descripcion.ToString().Contains(textBoxVistaDocs.Text)
+                               select documento;
+                    break;
+                default:
+                    documentos = from documento in entities.TIPO_DOCUMENTO
+                               select documento;
+                    break;
+            }
+            this.DgvDocumentos.DataSource = documentos.ToList();
+        }
+    }
 }

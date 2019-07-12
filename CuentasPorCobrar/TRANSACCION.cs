@@ -24,7 +24,5 @@ namespace CuentasPorCobrar
     
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual TIPO_DOCUMENTO TIPO_DOCUMENTO { get; set; }
-
-		
-	}
+    }
 }

@@ -30,6 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBalance));
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.cbxIDcliente = new System.Windows.Forms.ComboBox();
 			this.DTP_balance = new System.Windows.Forms.DateTimePicker();
 			this.txtMontoBal = new System.Windows.Forms.TextBox();
 			this.labelMonto = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
 			this.label_ID_cliente3 = new System.Windows.Forms.Label();
 			this.SaveBalance = new System.Windows.Forms.Button();
 			this.DeleteBalance = new System.Windows.Forms.Button();
-			this.cbxIDcliente = new System.Windows.Forms.ComboBox();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -53,6 +53,15 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(422, 245);
 			this.panel1.TabIndex = 0;
+			// 
+			// cbxIDcliente
+			// 
+			this.cbxIDcliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxIDcliente.FormattingEnabled = true;
+			this.cbxIDcliente.Location = new System.Drawing.Point(252, 11);
+			this.cbxIDcliente.Name = "cbxIDcliente";
+			this.cbxIDcliente.Size = new System.Drawing.Size(126, 21);
+			this.cbxIDcliente.TabIndex = 9;
 			// 
 			// DTP_balance
 			// 
@@ -91,9 +100,9 @@
 			this.label_ID_cliente3.AutoSize = true;
 			this.label_ID_cliente3.Location = new System.Drawing.Point(15, 20);
 			this.label_ID_cliente3.Name = "label_ID_cliente3";
-			this.label_ID_cliente3.Size = new System.Drawing.Size(52, 13);
+			this.label_ID_cliente3.Size = new System.Drawing.Size(39, 13);
 			this.label_ID_cliente3.TabIndex = 0;
-			this.label_ID_cliente3.Text = "ID cliente";
+			this.label_ID_cliente3.Text = "Cliente";
 			// 
 			// SaveBalance
 			// 
@@ -116,15 +125,6 @@
 			this.DeleteBalance.TabIndex = 13;
 			this.DeleteBalance.UseVisualStyleBackColor = true;
 			this.DeleteBalance.Click += new System.EventHandler(this.DeleteBalance_Click);
-			// 
-			// cbxIDcliente
-			// 
-			this.cbxIDcliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbxIDcliente.FormattingEnabled = true;
-			this.cbxIDcliente.Location = new System.Drawing.Point(252, 11);
-			this.cbxIDcliente.Name = "cbxIDcliente";
-			this.cbxIDcliente.Size = new System.Drawing.Size(126, 21);
-			this.cbxIDcliente.TabIndex = 9;
 			// 
 			// FrmBalance
 			// 

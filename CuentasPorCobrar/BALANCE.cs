@@ -11,11 +11,9 @@ namespace CuentasPorCobrar
 {
     using System;
     using System.Collections.Generic;
-	using System.ComponentModel;
-
-	public partial class BALANCE
+    
+    public partial class BALANCE
     {
-		[Browsable(false)]
         public int ID_cliente { get; set; }
         public System.DateTime Fecha_corte { get; set; }
         public decimal Monto { get; set; }

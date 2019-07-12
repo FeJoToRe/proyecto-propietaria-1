@@ -56,5 +56,34 @@ namespace CuentasPorCobrar
 				Vista_Transacciones_Load(sender, e);
 			}
 		}
-	}
+
+        private void buttonBuscarVista_Click(object sender, EventArgs e)
+        {
+            IQueryable<CuentasPorCobrar.TRANSACCION> transacciones;
+            switch (cbxVistaTransc.SelectedItem.ToString())
+            {
+                case "ID transaccion":
+                    transacciones = from transaccion in entities.TRANSACCION
+                               where transaccion.ID_transaccion.ToString().Contains(txtBoxVistaTransc.Text)
+                               select transaccion;
+                    break;
+                case "Tipo movimiento":
+                    transacciones = from transaccion in entities.TRANSACCION
+                               where transaccion.Tipo_movimiento.ToString().Contains(txtBoxVistaTransc.Text)
+                               select transaccion;
+                    break;
+                case "Nro documento":
+                    transacciones = from transaccion in entities.TRANSACCION
+                               where transaccion.ID_documento.ToString().Contains(txtBoxVistaTransc.Text)
+                               select transaccion;
+                    break;
+                default:
+                    transacciones = from transaccion in entities.TRANSACCION
+                               select transaccion;
+                    break;
+            }
+            this.dgvTransacciones.DataSource = transacciones.ToList();
+
+        }
+    }
 }
