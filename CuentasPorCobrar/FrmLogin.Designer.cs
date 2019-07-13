@@ -94,6 +94,7 @@
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Ingresar";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // FrmLogin
             // 
@@ -107,7 +108,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "FrmLogin";
-            this.Text = "FrmLogin";
+            this.Text = "Inicio de sesión";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

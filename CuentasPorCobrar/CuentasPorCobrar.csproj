@@ -75,6 +75,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Cuentas_por_cobrarEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DEPARTAMENTOS.cs">
+      <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMPLEADOS.cs">
+      <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
       <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="TRANSACCION.cs">
+      <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USUARIOS.cs">
       <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Vista_Balance.cs">

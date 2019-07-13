@@ -4,13 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9e21808e7d044f368f6e1bde9f3d8519" Name="Diagram1">
+      <Diagram DiagramId="2e69721778464ab7ab0f8415f843f6f1" Name="Diagram1">
         <EntityTypeShape EntityType="Cuentas_por_cobrarModel.BALANCE" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Cuentas_por_cobrarModel.CLIENTE" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cuentas_por_cobrarModel.DEPARTAMENTOS" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cuentas_por_cobrarModel.EMPLEADOS" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Cuentas_por_cobrarModel.TIPO_DOCUMENTO" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Cuentas_por_cobrarModel.TRANSACCION" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cuentas_por_cobrarModel.USUARIOS" Width="1.5" PointX="5.75" PointY="7.5" IsExpanded="true" />
         <AssociationConnector Association="Cuentas_por_cobrarModel.FK_BALANCE_CLIENTE" ManuallyRouted="false" />
         <AssociationConnector Association="Cuentas_por_cobrarModel.FK_TRANSACCION_CLIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="Cuentas_por_cobrarModel.FK_EMPLEADOS_DEPARTAMENTOS" ManuallyRouted="false" />
         <AssociationConnector Association="Cuentas_por_cobrarModel.FK_TRANSACCION_TIPO_DOCUMENTO1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

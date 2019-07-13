@@ -47,5 +47,15 @@ namespace CuentasPorCobrar
 			Vista_Balance bal = new Vista_Balance();
 			bal.Show();
 		}
-	}
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+    }
 }

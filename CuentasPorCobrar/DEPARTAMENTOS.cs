@@ -12,19 +12,19 @@ namespace CuentasPorCobrar
     using System;
     using System.Collections.Generic;
     
-    public partial class TIPO_DOCUMENTO
+    public partial class DEPARTAMENTOS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TIPO_DOCUMENTO()
+        public DEPARTAMENTOS()
         {
-            this.TRANSACCION = new HashSet<TRANSACCION>();
+            this.EMPLEADOS = new HashSet<EMPLEADOS>();
         }
     
-        public int ID_documento { get; set; }
+        public int ID_departamento { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TRANSACCION> TRANSACCION { get; set; }
+        public virtual ICollection<EMPLEADOS> EMPLEADOS { get; set; }
     }
 }
