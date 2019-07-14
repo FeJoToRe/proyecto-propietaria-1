@@ -97,11 +97,11 @@ namespace CuentasPorCobrar
             this.dgvTransacciones.DataSource = transacciones.ToList();
 
         }
-        Validaciones validaciones = new Validaciones();
+        
 
         private void txtBoxVistaTransc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            validaciones.ValidarLetras(e);
+            
         }
     }
 }

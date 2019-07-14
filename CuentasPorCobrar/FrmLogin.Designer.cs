@@ -68,6 +68,7 @@
             this.txtPassw.Name = "txtPassw";
             this.txtPassw.Size = new System.Drawing.Size(100, 20);
             this.txtPassw.TabIndex = 2;
+            this.txtPassw.UseSystemPasswordChar = true;
             // 
             // panel1
             // 
