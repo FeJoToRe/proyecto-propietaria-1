@@ -43,7 +43,7 @@ namespace CuentasPorCobrar
             else
             {
                 e.Handled = true;
-                MessageBox.Show("Solo se permite ingresar letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Solo se permite ingresar numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

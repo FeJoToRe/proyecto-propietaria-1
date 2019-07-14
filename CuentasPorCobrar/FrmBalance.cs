@@ -58,5 +58,12 @@ namespace CuentasPorCobrar
 
 		//salir de la ventana
 		private void DeleteBalance_Click(object sender, EventArgs e) => Close();
-	}
+
+        Validaciones obj = new Validaciones();
+
+        private void txtMontoBal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            obj.ValidarNumeros(e);
+        }
+    }
 }
