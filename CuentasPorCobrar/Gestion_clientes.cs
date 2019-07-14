@@ -74,5 +74,10 @@ namespace CuentasPorCobrar
         {
             obj.ValidarLetras(e);
         }
+
+        private void txtCredito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            obj.ValidarNumeros(e);
+        }
     }
 }

@@ -121,6 +121,7 @@
             this.txtCredito.Name = "txtCredito";
             this.txtCredito.Size = new System.Drawing.Size(100, 20);
             this.txtCredito.TabIndex = 8;
+            this.txtCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCredito_KeyPress);
             // 
             // panel1
             // 

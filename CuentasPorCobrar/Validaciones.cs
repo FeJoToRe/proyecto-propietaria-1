@@ -29,5 +29,22 @@ namespace CuentasPorCobrar
                 MessageBox.Show("Solo se permite ingresar letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        public void ValidarNumeros(KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar)) //permitir que el usuario digite un numero
+            {
+                e.Handled = false;
+            }
+           
+            else if (char.IsControl(e.KeyChar))//permitir borrado de letras
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permite ingresar letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }
