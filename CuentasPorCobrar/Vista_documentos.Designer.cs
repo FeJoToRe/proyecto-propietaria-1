@@ -108,6 +108,7 @@
             // 
             // cbxVistaDocs
             // 
+            this.cbxVistaDocs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxVistaDocs.FormattingEnabled = true;
             this.cbxVistaDocs.Items.AddRange(new object[] {
             "ID documento",
@@ -125,6 +126,7 @@
             this.textBoxVistaDocs.Name = "textBoxVistaDocs";
             this.textBoxVistaDocs.Size = new System.Drawing.Size(100, 20);
             this.textBoxVistaDocs.TabIndex = 8;
+            this.textBoxVistaDocs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxVistaDocs_KeyPress);
             // 
             // Vista_documentos
             // 

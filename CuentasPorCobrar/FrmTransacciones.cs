@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,12 +23,14 @@ namespace CuentasPorCobrar
 			cbxIDCliente.DataSource = entities.CLIENTE.Select(x => x).ToList();
 			cbxIDCliente.SelectedIndex = 0;
 			cbxIDCliente.DisplayMember = "Nombre";
-			cbxIDCliente.ValueMember = "ID_cliente";
+			
 
 			cbxIDTipo.DataSource = entities.TIPO_DOCUMENTO.Select(x => x).ToList();
 			cbxIDTipo.SelectedIndex = 0;
 			cbxIDTipo.DisplayMember = "Descripcion";
-			cbxIDTipo.ValueMember = "ID_documento";
+			
+
+            txtFecha.Text = DateTime.Today.ToString("dd/MM/yyyy");
 		}
 
 		private void TextBox1_TextChanged(object sender, EventArgs e)
@@ -37,34 +40,40 @@ namespace CuentasPorCobrar
 		//validacion transaccion
 		private void FrmTransaccion_Load(object sender, EventArgs e)
 		{
+            cbxTipoMov.SelectedIndex = 0;
+
 			if (transaccion != null)
 			{
-				txtID_transc.Text = transaccion.ID_transaccion.ToString();
 				cbxTipoMov.Text = transaccion.Tipo_movimiento.ToString();
-				cbxIDTipo.Text = transaccion.ID_documento.ToString();
+                cbxIDTipo.SelectedIndex = cbxIDTipo.FindStringExact(transaccion.TIPO_DOCUMENTO.Descripcion);
+                
 				txtNro_doc.Text = transaccion.Num_documento.ToString();
-				cbxIDCliente.Text = transaccion.ID_cliente.ToString();
-				txtMonto.Text = transaccion.Monto.ToString();
-				DTP_fecha_transc.Value = transaccion.Fecha;//esto hay que cambiarlo
-
+				
+                cbxIDCliente.SelectedIndex = cbxIDCliente.FindStringExact(transaccion.CLIENTE.Nombre);
+                txtMonto.Text = transaccion.Monto.ToString();
+                txtFecha.Text = transaccion.Fecha.ToString("dd/MM/yyyy");
 			}
 
 		}
-		//guardar transaccion
-		private void SaveTransc_Click(object sender, EventArgs e)
+        Validaciones obj = new Validaciones();
+        //guardar transaccion
+        private void SaveTransc_Click(object sender, EventArgs e)
 		{
-			Vista_Transacciones vt = new Vista_Transacciones();
 
-			entities.TRANSACCION.Add(new TRANSACCION
-			{
-				//ID_transaccion = int.Parse(txtID_transc.Text),
-				Tipo_movimiento = cbxTipoMov.Text,
-				ID_documento = int.Parse(cbxIDTipo.SelectedValue.ToString()),
-				Num_documento = int.Parse(txtNro_doc.Text),
-				ID_cliente = int.Parse(cbxIDCliente.SelectedValue.ToString()),
-				Monto = decimal.Parse(txtMonto.Text),
-				Fecha = DTP_fecha_transc.Value
-			});
+            Vista_Transacciones vt = new Vista_Transacciones();
+            if (transaccion == null)
+            {
+                transaccion = new TRANSACCION();
+                entities.TRANSACCION.Add(transaccion);
+            }
+
+            transaccion.Tipo_movimiento = cbxTipoMov.Text;
+            transaccion.TIPO_DOCUMENTO = (TIPO_DOCUMENTO) cbxIDTipo.SelectedItem;
+            transaccion.Num_documento = int.Parse(txtNro_doc.Text);
+            transaccion.CLIENTE = (CLIENTE) cbxIDCliente.SelectedItem;
+            transaccion.Monto = decimal.Parse(txtMonto.Text);
+            transaccion.Fecha = DateTime.ParseExact (txtFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+			
 			entities.SaveChanges();
 			MessageBox.Show("Datos guardados con exito");
 			vt.Show();
@@ -78,6 +87,29 @@ namespace CuentasPorCobrar
 			Close();
 
 		}
-	}
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtMonto_TextChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            obj.ValidarNumeros(e);
+
+        }
+
+        private void txtNro_doc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            obj.ValidarNumeros(e);
+
+        }
+    }
 }
 

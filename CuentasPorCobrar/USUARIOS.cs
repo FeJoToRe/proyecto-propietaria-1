@@ -11,7 +11,8 @@ namespace CuentasPorCobrar
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class USUARIOS
     {
         public int ID_usuario { get; set; }
@@ -19,7 +20,8 @@ namespace CuentasPorCobrar
         public string Clave { get; set; }
         public string Estado { get; set; }
         public int ID_rol { get; set; }
-    
+
+        [Browsable(false)]
         public virtual ROLES ROLES { get; set; }
     }
 }

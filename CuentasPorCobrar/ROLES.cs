@@ -11,7 +11,8 @@ namespace CuentasPorCobrar
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class ROLES
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,8 @@ namespace CuentasPorCobrar
     
         public int ID_rol { get; set; }
         public string Nombre { get; set; }
-    
+
+        [Browsable(false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIOS> USUARIOS { get; set; }
     }

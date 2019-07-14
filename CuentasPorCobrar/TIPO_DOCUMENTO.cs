@@ -11,7 +11,8 @@ namespace CuentasPorCobrar
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class TIPO_DOCUMENTO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,7 +24,8 @@ namespace CuentasPorCobrar
         public int ID_documento { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
-    
+
+        [Browsable(false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRANSACCION> TRANSACCION { get; set; }
     }

@@ -98,6 +98,7 @@
             // 
             // cbxBuscar
             // 
+            this.cbxBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBuscar.FormattingEnabled = true;
             this.cbxBuscar.Items.AddRange(new object[] {
             "Nombre",
@@ -115,6 +116,7 @@
             this.textBoxBuscar.Name = "textBoxBuscar";
             this.textBoxBuscar.Size = new System.Drawing.Size(100, 20);
             this.textBoxBuscar.TabIndex = 7;
+            this.textBoxBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBuscar_KeyPress);
             // 
             // buttonBuscar
             // 

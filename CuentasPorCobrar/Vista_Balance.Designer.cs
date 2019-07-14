@@ -125,9 +125,11 @@
             this.txtBoxVistaBalance.Name = "txtBoxVistaBalance";
             this.txtBoxVistaBalance.Size = new System.Drawing.Size(100, 20);
             this.txtBoxVistaBalance.TabIndex = 3;
+            this.txtBoxVistaBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxVistaBalance_KeyPress);
             // 
             // cbxVistaBalance
             // 
+            this.cbxVistaBalance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxVistaBalance.FormattingEnabled = true;
             this.cbxVistaBalance.Items.AddRange(new object[] {
             "ID_cliente",

@@ -11,7 +11,8 @@ namespace CuentasPorCobrar
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class TRANSACCION
     {
         public int ID_transaccion { get; set; }
@@ -22,7 +23,9 @@ namespace CuentasPorCobrar
         public int ID_cliente { get; set; }
         public decimal Monto { get; set; }
     
+        [Browsable (false)]
         public virtual CLIENTE CLIENTE { get; set; }
+        [Browsable(false)]
         public virtual TIPO_DOCUMENTO TIPO_DOCUMENTO { get; set; }
     }
 }

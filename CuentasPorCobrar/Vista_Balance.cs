@@ -92,5 +92,11 @@ namespace CuentasPorCobrar
             this.dgvBalance.DataSource = balances.ToList();
 
         }
+        Validaciones validaciones = new Validaciones();
+
+        private void txtBoxVistaBalance_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validaciones.ValidarLetras(e);
+        }
     }
 }

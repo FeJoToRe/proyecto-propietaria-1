@@ -97,5 +97,11 @@ namespace CuentasPorCobrar
             }
             this.DgvDocumentos.DataSource = documentos.ToList();
         }
+        Validaciones validaciones = new Validaciones();
+
+        private void textBoxVistaDocs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validaciones.ValidarLetras(e);
+        }
     }
 }

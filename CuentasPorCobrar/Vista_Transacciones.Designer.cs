@@ -35,10 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvTransacciones = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonBuscarVista = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbxVistaTransc = new System.Windows.Forms.ComboBox();
             this.txtBoxVistaTransc = new System.Windows.Forms.TextBox();
+            this.cbxVistaTransc = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonBuscarVista = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransacciones)).BeginInit();
             this.panel2.SuspendLayout();
@@ -119,27 +119,17 @@
             this.panel2.Size = new System.Drawing.Size(182, 152);
             this.panel2.TabIndex = 1;
             // 
-            // buttonBuscarVista
+            // txtBoxVistaTransc
             // 
-            this.buttonBuscarVista.Location = new System.Drawing.Point(55, 113);
-            this.buttonBuscarVista.Name = "buttonBuscarVista";
-            this.buttonBuscarVista.Size = new System.Drawing.Size(75, 23);
-            this.buttonBuscarVista.TabIndex = 0;
-            this.buttonBuscarVista.Text = "Buscar";
-            this.buttonBuscarVista.UseVisualStyleBackColor = true;
-            this.buttonBuscarVista.Click += new System.EventHandler(this.buttonBuscarVista_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Criterio";
+            this.txtBoxVistaTransc.Location = new System.Drawing.Point(47, 72);
+            this.txtBoxVistaTransc.Name = "txtBoxVistaTransc";
+            this.txtBoxVistaTransc.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxVistaTransc.TabIndex = 3;
+            this.txtBoxVistaTransc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxVistaTransc_KeyPress);
             // 
             // cbxVistaTransc
             // 
+            this.cbxVistaTransc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxVistaTransc.FormattingEnabled = true;
             this.cbxVistaTransc.Items.AddRange(new object[] {
             "ID transaccion",
@@ -151,12 +141,24 @@
             this.cbxVistaTransc.Size = new System.Drawing.Size(102, 21);
             this.cbxVistaTransc.TabIndex = 2;
             // 
-            // txtBoxVistaTransc
+            // label2
             // 
-            this.txtBoxVistaTransc.Location = new System.Drawing.Point(47, 72);
-            this.txtBoxVistaTransc.Name = "txtBoxVistaTransc";
-            this.txtBoxVistaTransc.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxVistaTransc.TabIndex = 3;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Criterio";
+            // 
+            // buttonBuscarVista
+            // 
+            this.buttonBuscarVista.Location = new System.Drawing.Point(55, 113);
+            this.buttonBuscarVista.Name = "buttonBuscarVista";
+            this.buttonBuscarVista.Size = new System.Drawing.Size(75, 23);
+            this.buttonBuscarVista.TabIndex = 0;
+            this.buttonBuscarVista.Text = "Buscar";
+            this.buttonBuscarVista.UseVisualStyleBackColor = true;
+            this.buttonBuscarVista.Click += new System.EventHandler(this.buttonBuscarVista_Click);
             // 
             // Vista_Transacciones
             // 

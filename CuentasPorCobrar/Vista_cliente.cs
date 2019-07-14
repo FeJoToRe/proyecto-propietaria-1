@@ -101,5 +101,11 @@ namespace CuentasPorCobrar
             this.DgvClientes.DataSource = clientes.ToList();
 
         }
+        Validaciones validaciones = new Validaciones();
+
+        private void textBoxBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validaciones.ValidarLetras(e);
+        }
     }
 }
