@@ -45,10 +45,19 @@ namespace CuentasPorCobrar
 		{
 
 		}
-		//boton guardar cliente 
-		private void SaveCliente_Click(object sender, EventArgs e)
+
+        Validaciones validador = new Validaciones();
+        //boton guardar cliente 
+        private void SaveCliente_Click(object sender, EventArgs e)
 		{
-			if (cliente == null)
+           if (!validador.validaCedula(txtCedula.Text) ){
+
+                MessageBox.Show("Esta cedula no es valida");
+                return;
+            }
+
+
+            if (cliente == null)
 			{
 				cliente = new CLIENTE();
 				entities.CLIENTE.Add(cliente);
