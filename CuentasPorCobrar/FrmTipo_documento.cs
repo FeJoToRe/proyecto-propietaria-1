@@ -51,7 +51,14 @@ namespace CuentasPorCobrar
 			MessageBox.Show("Datos guardados con exito");
 			this.Close();
 		}
-
+        //boton salir
 		private void SalirDoc_Click(object sender, EventArgs e) => Close();
-	}
+
+        Validaciones obj = new Validaciones();
+
+        private void txtDescrip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            obj.ValidarLetras(e);
+        }
+    }
 }
