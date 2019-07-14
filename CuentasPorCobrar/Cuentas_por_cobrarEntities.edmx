@@ -24,23 +24,12 @@
           <Property Name="Limite_credito" Type="money" Nullable="false" />
           <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="DEPARTAMENTOS">
+        <EntityType Name="ROLES">
           <Key>
-            <PropertyRef Name="ID_departamento" />
+            <PropertyRef Name="ID_rol" />
           </Key>
-          <Property Name="ID_departamento" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Activo" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="EMPLEADOS">
-          <Key>
-            <PropertyRef Name="ID_empleado" />
-          </Key>
-          <Property Name="ID_empleado" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ID_departamento" Type="int" Nullable="false" />
-          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Salario" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_rol" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TIPO_DOCUMENTO">
           <Key>
@@ -66,10 +55,11 @@
           <Key>
             <PropertyRef Name="ID_usuario" />
           </Key>
-          <Property Name="ID_usuario" Type="int" Nullable="false" />
+          <Property Name="ID_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Usuario" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Clave" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ID_rol" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_BALANCE_CLIENTE">
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1">
@@ -82,18 +72,6 @@
             </Principal>
             <Dependent Role="BALANCE">
               <PropertyRef Name="ID_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EMPLEADOS_DEPARTAMENTOS">
-          <End Role="DEPARTAMENTOS" Type="Self.DEPARTAMENTOS" Multiplicity="1" />
-          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEPARTAMENTOS">
-              <PropertyRef Name="ID_departamento" />
-            </Principal>
-            <Dependent Role="EMPLEADOS">
-              <PropertyRef Name="ID_departamento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -125,21 +103,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_USUARIOS_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID_rol" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Cuentas_por_cobrarModelStoreContainer">
           <EntitySet Name="BALANCE" EntityType="Self.BALANCE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DEPARTAMENTOS" EntityType="Self.DEPARTAMENTOS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EMPLEADOS" EntityType="Self.EMPLEADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_DOCUMENTO" EntityType="Self.TIPO_DOCUMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BALANCE_CLIENTE" Association="Self.FK_BALANCE_CLIENTE">
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="BALANCE" EntitySet="BALANCE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EMPLEADOS_DEPARTAMENTOS" Association="Self.FK_EMPLEADOS_DEPARTAMENTOS">
-            <End Role="DEPARTAMENTOS" EntitySet="DEPARTAMENTOS" />
-            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
           </AssociationSet>
           <AssociationSet Name="FK_TRANSACCION_CLIENTE" Association="Self.FK_TRANSACCION_CLIENTE">
             <End Role="CLIENTE" EntitySet="CLIENTE" />
@@ -148,6 +133,10 @@
           <AssociationSet Name="FK_TRANSACCION_TIPO_DOCUMENTO1" Association="Self.FK_TRANSACCION_TIPO_DOCUMENTO1">
             <End Role="TIPO_DOCUMENTO" EntitySet="TIPO_DOCUMENTO" />
             <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_ROLES" Association="Self.FK_USUARIOS_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -177,25 +166,13 @@
           <NavigationProperty Name="BALANCE" Relationship="Self.FK_BALANCE_CLIENTE" FromRole="CLIENTE" ToRole="BALANCE" />
           <NavigationProperty Name="TRANSACCION" Relationship="Self.FK_TRANSACCION_CLIENTE" FromRole="CLIENTE" ToRole="TRANSACCION" />
         </EntityType>
-        <EntityType Name="DEPARTAMENTOS">
+        <EntityType Name="ROLES">
           <Key>
-            <PropertyRef Name="ID_departamento" />
+            <PropertyRef Name="ID_rol" />
           </Key>
-          <Property Name="ID_departamento" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="EMPLEADOS" Relationship="Self.FK_EMPLEADOS_DEPARTAMENTOS" FromRole="DEPARTAMENTOS" ToRole="EMPLEADOS" />
-        </EntityType>
-        <EntityType Name="EMPLEADOS">
-          <Key>
-            <PropertyRef Name="ID_empleado" />
-          </Key>
-          <Property Name="ID_empleado" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ID_departamento" Type="Int32" Nullable="false" />
-          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Salario" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <NavigationProperty Name="DEPARTAMENTOS" Relationship="Self.FK_EMPLEADOS_DEPARTAMENTOS" FromRole="EMPLEADOS" ToRole="DEPARTAMENTOS" />
+          <Property Name="ID_rol" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS_ROLES" FromRole="ROLES" ToRole="USUARIOS" />
         </EntityType>
         <EntityType Name="TIPO_DOCUMENTO">
           <Key>
@@ -224,10 +201,12 @@
           <Key>
             <PropertyRef Name="ID_usuario" />
           </Key>
-          <Property Name="ID_usuario" Type="Int32" Nullable="false" />
+          <Property Name="ID_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Clave" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ID_rol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ROLES" Relationship="Self.FK_USUARIOS_ROLES" FromRole="USUARIOS" ToRole="ROLES" />
         </EntityType>
         <Association Name="FK_BALANCE_CLIENTE">
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1">
@@ -257,15 +236,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EMPLEADOS_DEPARTAMENTOS">
-          <End Role="DEPARTAMENTOS" Type="Self.DEPARTAMENTOS" Multiplicity="1" />
-          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="*" />
+        <Association Name="FK_USUARIOS_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DEPARTAMENTOS">
-              <PropertyRef Name="ID_departamento" />
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID_rol" />
             </Principal>
-            <Dependent Role="EMPLEADOS">
-              <PropertyRef Name="ID_departamento" />
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_rol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -286,8 +265,7 @@
         <EntityContainer Name="Cuentas_por_cobrarEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BALANCE" EntityType="Self.BALANCE" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
-          <EntitySet Name="DEPARTAMENTOS" EntityType="Self.DEPARTAMENTOS" />
-          <EntitySet Name="EMPLEADOS" EntityType="Self.EMPLEADOS" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" />
           <EntitySet Name="TIPO_DOCUMENTO" EntityType="Self.TIPO_DOCUMENTO" />
           <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
@@ -299,9 +277,9 @@
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="TRANSACCION" EntitySet="TRANSACCION" />
           </AssociationSet>
-          <AssociationSet Name="FK_EMPLEADOS_DEPARTAMENTOS" Association="Self.FK_EMPLEADOS_DEPARTAMENTOS">
-            <End Role="DEPARTAMENTOS" EntitySet="DEPARTAMENTOS" />
-            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+          <AssociationSet Name="FK_USUARIOS_ROLES" Association="Self.FK_USUARIOS_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
           </AssociationSet>
           <AssociationSet Name="FK_TRANSACCION_TIPO_DOCUMENTO1" Association="Self.FK_TRANSACCION_TIPO_DOCUMENTO1">
             <End Role="TIPO_DOCUMENTO" EntitySet="TIPO_DOCUMENTO" />
@@ -335,23 +313,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DEPARTAMENTOS">
-            <EntityTypeMapping TypeName="Cuentas_por_cobrarModel.DEPARTAMENTOS">
-              <MappingFragment StoreEntitySet="DEPARTAMENTOS">
-                <ScalarProperty Name="ID_departamento" ColumnName="ID_departamento" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EMPLEADOS">
-            <EntityTypeMapping TypeName="Cuentas_por_cobrarModel.EMPLEADOS">
-              <MappingFragment StoreEntitySet="EMPLEADOS">
-                <ScalarProperty Name="ID_empleado" ColumnName="ID_empleado" />
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="Cuentas_por_cobrarModel.ROLES">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="ID_rol" ColumnName="ID_rol" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="ID_departamento" ColumnName="ID_departamento" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Salario" ColumnName="Salario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -384,6 +350,7 @@
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="ID_rol" ColumnName="ID_rol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

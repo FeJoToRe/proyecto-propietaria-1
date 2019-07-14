@@ -27,8 +27,7 @@ namespace CuentasPorCobrar
     
         public virtual DbSet<BALANCE> BALANCE { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
-        public virtual DbSet<DEPARTAMENTOS> DEPARTAMENTOS { get; set; }
-        public virtual DbSet<EMPLEADOS> EMPLEADOS { get; set; }
+        public virtual DbSet<ROLES> ROLES { get; set; }
         public virtual DbSet<TIPO_DOCUMENTO> TIPO_DOCUMENTO { get; set; }
         public virtual DbSet<TRANSACCION> TRANSACCION { get; set; }
         public virtual DbSet<USUARIOS> USUARIOS { get; set; }

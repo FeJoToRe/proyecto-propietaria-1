@@ -18,5 +18,8 @@ namespace CuentasPorCobrar
         public string Usuario { get; set; }
         public string Clave { get; set; }
         public string Estado { get; set; }
+        public int ID_rol { get; set; }
+    
+        public virtual ROLES ROLES { get; set; }
     }
 }

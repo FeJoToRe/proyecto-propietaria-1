@@ -55,7 +55,12 @@ namespace CuentasPorCobrar
 
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
+            Program.Login.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

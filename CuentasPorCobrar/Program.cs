@@ -14,9 +14,13 @@ namespace CuentasPorCobrar
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+            Login = new FrmLogin();
+            Application.Run(Login);
         }
+        public static FrmLogin Login { get; set; }
+        public static USUARIOS usuario { get; set; }
     }
 }

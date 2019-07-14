@@ -21,7 +21,7 @@ namespace CuentasPorCobrar
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -42,7 +42,10 @@ namespace CuentasPorCobrar
             else
             {
                 MessageBox.Show("Bienvenido " + txtUser.Text);
+                Program.usuario = usuario;
                 Menu frm = new Menu();
+                txtUser.Text = "";
+                txtPassw.Text = "";
                 frm.Show();
                 Hide();
             }

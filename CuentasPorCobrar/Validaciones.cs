@@ -89,5 +89,9 @@ namespace CuentasPorCobrar
                 return false;
 
         }
+        public static bool ValidarAdmin ()
+        {
+            return Program.usuario.ROLES.Nombre == "Admin";
+        }
     }
 }

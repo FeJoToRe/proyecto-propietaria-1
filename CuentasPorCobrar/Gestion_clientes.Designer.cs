@@ -36,12 +36,12 @@
             this.label_limite_credito = new System.Windows.Forms.Label();
             this.label_estado = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtCedula = new System.Windows.Forms.TextBox();
             this.txtCredito = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chbxCliente = new System.Windows.Forms.CheckBox();
             this.SaveCliente = new System.Windows.Forms.Button();
             this.SalirCliente = new System.Windows.Forms.Button();
+            this.txtCedula = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,13 +108,6 @@
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
-            // txtCedula
-            // 
-            this.txtCedula.Location = new System.Drawing.Point(189, 149);
-            this.txtCedula.Name = "txtCedula";
-            this.txtCedula.Size = new System.Drawing.Size(100, 20);
-            this.txtCedula.TabIndex = 7;
-            // 
             // txtCredito
             // 
             this.txtCredito.Location = new System.Drawing.Point(189, 198);
@@ -126,6 +119,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.txtCedula);
             this.panel1.Controls.Add(this.chbxCliente);
             this.panel1.Controls.Add(this.label_nombre);
             this.panel1.Controls.Add(this.txt_ID_cliente);
@@ -168,6 +162,14 @@
             this.SalirCliente.UseVisualStyleBackColor = true;
             this.SalirCliente.Click += new System.EventHandler(this.SalirCliente_Click);
             // 
+            // txtCedula
+            // 
+            this.txtCedula.Location = new System.Drawing.Point(156, 118);
+            this.txtCedula.Mask = "999-0000000-9";
+            this.txtCedula.Name = "txtCedula";
+            this.txtCedula.Size = new System.Drawing.Size(100, 20);
+            this.txtCedula.TabIndex = 4;
+            // 
             // FrmGestion_clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,7 +178,6 @@
             this.Controls.Add(this.SalirCliente);
             this.Controls.Add(this.SaveCliente);
             this.Controls.Add(this.txtCredito);
-            this.Controls.Add(this.txtCedula);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label_estado);
             this.Controls.Add(this.label_limite_credito);
@@ -202,11 +203,11 @@
 		private System.Windows.Forms.Label label_limite_credito;
 		private System.Windows.Forms.Label label_estado;
 		private System.Windows.Forms.TextBox txtNombre;
-		private System.Windows.Forms.TextBox txtCedula;
 		private System.Windows.Forms.TextBox txtCredito;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button SaveCliente;
 		private System.Windows.Forms.Button SalirCliente;
 		private System.Windows.Forms.CheckBox chbxCliente;
-	}
+        private System.Windows.Forms.MaskedTextBox txtCedula;
+    }
 }

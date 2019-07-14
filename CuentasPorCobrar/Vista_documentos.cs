@@ -18,19 +18,25 @@ namespace CuentasPorCobrar
 		{
 			InitializeComponent();
 		}
-
+        //boton crear
 		private void buttonCrear_Click(object sender, EventArgs e)
 		{
 			FrmTipo_documento doc = new FrmTipo_documento();
 			doc.ShowDialog();
 		}
-
+        //boton editar
 		private void buttonEditar_Click(object sender, EventArgs e)
 		{
 			FrmTipo_documento doc = new FrmTipo_documento();
 			TIPO_DOCUMENTO documento = null;
 
-			if (DgvDocumentos.SelectedRows.Count > 0)
+            if (!Validaciones.ValidarAdmin())
+            {
+                MessageBox.Show("Acceso restringido para este rol");
+                return;
+            }
+
+            if (DgvDocumentos.SelectedRows.Count > 0)
 			{
 				int id = Int32.Parse(DgvDocumentos.SelectedRows[0].Cells["ID_documento"].Value.ToString());
 				documento = entities.TIPO_DOCUMENTO.First(x => x.ID_documento == id);
@@ -38,10 +44,16 @@ namespace CuentasPorCobrar
 			doc.Documento = documento;
 			doc.ShowDialog();
 		}
-
+        //boton eliminar
 		private void buttonEliminar_Click(object sender, EventArgs e)
 		{
-			if (DgvDocumentos.SelectedRows.Count > 0)
+            if (!Validaciones.ValidarAdmin())
+            {
+                MessageBox.Show("Acceso restringido para este rol");
+                return;
+            }
+
+            if (DgvDocumentos.SelectedRows.Count > 0)
 			{
 				int id = Int32.Parse(DgvDocumentos.SelectedRows[0].Cells["ID_documento"].Value.ToString());
 				TIPO_DOCUMENTO documento = entities.TIPO_DOCUMENTO.First(x => x.ID_documento == id);

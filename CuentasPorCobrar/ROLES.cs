@@ -12,19 +12,18 @@ namespace CuentasPorCobrar
     using System;
     using System.Collections.Generic;
     
-    public partial class DEPARTAMENTOS
+    public partial class ROLES
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DEPARTAMENTOS()
+        public ROLES()
         {
-            this.EMPLEADOS = new HashSet<EMPLEADOS>();
+            this.USUARIOS = new HashSet<USUARIOS>();
         }
     
-        public int ID_departamento { get; set; }
-        public string Descripcion { get; set; }
-        public bool Activo { get; set; }
+        public int ID_rol { get; set; }
+        public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EMPLEADOS> EMPLEADOS { get; set; }
+        public virtual ICollection<USUARIOS> USUARIOS { get; set; }
     }
 }

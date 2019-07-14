@@ -28,7 +28,13 @@ namespace CuentasPorCobrar
 			FrmBalance bal = new FrmBalance();
 			BALANCE balance = null;
 
-			if (dgvBalance.SelectedRows.Count > 0)
+            if (!Validaciones.ValidarAdmin())
+            {
+                MessageBox.Show("Acceso restringido para este rol");
+                return;
+            }
+
+            if (dgvBalance.SelectedRows.Count > 0)
 			{												//refiere a la tabla cliente
 				int id = int.Parse(dgvBalance.SelectedRows[0].Cells["ID_cliente"].Value.ToString());
 				balance = entities.BALANCE.First(x => x.ID_cliente == id);
@@ -47,7 +53,13 @@ namespace CuentasPorCobrar
 		//eliminar balance
 		private void btnEliminar_Click(object sender, EventArgs e)
 		{
-			if (dgvBalance.SelectedRows.Count > 0)
+            if (!Validaciones.ValidarAdmin())
+            {
+                MessageBox.Show("Acceso restringido para este rol");
+                return;
+            }
+
+            if (dgvBalance.SelectedRows.Count > 0)
 			{
 				int id = Int32.Parse(dgvBalance.SelectedRows[0].Cells["ID_balance"].Value.ToString());
 				BALANCE balance = entities.BALANCE.First(x => x.ID_balance == id);

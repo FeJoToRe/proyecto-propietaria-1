@@ -36,7 +36,14 @@ namespace CuentasPorCobrar
 		{
 			FrmGestion_clientes cl = new FrmGestion_clientes();
 			CLIENTE cliente = null;
-			if (DgvClientes.SelectedRows.Count > 0)
+
+            if (!Validaciones.ValidarAdmin())
+            {
+                MessageBox.Show("Acceso restringido para este rol");
+                return;
+            }
+
+            if (DgvClientes.SelectedRows.Count > 0)
 			{
 				int id = Int32.Parse(DgvClientes.SelectedRows[0].Cells["ID_cliente"].Value.ToString());
 				cliente = entities.CLIENTE.First(x => x.ID_cliente == id);
@@ -49,6 +56,12 @@ namespace CuentasPorCobrar
 		//borrar clientes
 		private void buttonBorrar_Click(object sender, EventArgs e)
 		{
+            if (!Validaciones.ValidarAdmin())
+            {
+                MessageBox.Show("Acceso restringido para este rol");
+                    return;
+            }
+
 			if (DgvClientes.SelectedRows.Count > 0)
 			{
 				int id = Int32.Parse(DgvClientes.SelectedRows[0].Cells["ID_cliente"].Value.ToString());

@@ -23,7 +23,13 @@ namespace CuentasPorCobrar
 			FrmTransaccion tran = new FrmTransaccion();
 			TRANSACCION transaccion = null;
 
-			if (dgvTransacciones.SelectedRows.Count > 0)
+            if (!Validaciones.ValidarAdmin())
+            {
+                MessageBox.Show("Acceso restringido para este rol");
+                return;
+            }
+
+            if (dgvTransacciones.SelectedRows.Count > 0)
 			{
 				int id = int.Parse(dgvTransacciones.SelectedRows[0].Cells["ID_transaccion"].Value.ToString());
 				transaccion = entities.TRANSACCION.First(x => x.ID_transaccion == id);
@@ -47,7 +53,13 @@ namespace CuentasPorCobrar
 		//eliminar transacciones
 		private void btnEliminar_Click(object sender, EventArgs e)
 		{
-			if (dgvTransacciones.SelectedRows.Count > 0)
+            if (!Validaciones.ValidarAdmin())
+            {
+                MessageBox.Show("Acceso restringido para este rol");
+                return;
+            }
+
+            if (dgvTransacciones.SelectedRows.Count > 0)
 			{
 				int id = Int32.Parse(dgvTransacciones.SelectedRows[0].Cells["ID_transaccion"].Value.ToString());
 				TRANSACCION transaccion = entities.TRANSACCION.First(x => x.ID_transaccion == id);
