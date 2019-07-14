@@ -67,5 +67,12 @@ namespace CuentasPorCobrar
 		//salir de la ventana
 		private void SalirCliente_Click(object sender, EventArgs e) => this.Close();
 
-	}
+        Validaciones obj = new Validaciones();
+
+        //validando nombre cliente admita solo letras
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            obj.ValidarLetras(e);
+        }
+    }
 }
