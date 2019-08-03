@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace CuentasPorCobrar
 	public partial class FrmTransaccion : Form
 	{
 		public TRANSACCION transaccion { get; set; }
-		private Cuentas_por_cobrarEntities entities = new Cuentas_por_cobrarEntities();
+		public Cuentas_por_cobrarEntities entities = new Cuentas_por_cobrarEntities();
 
 		public FrmTransaccion()
 		{
@@ -67,6 +68,8 @@ namespace CuentasPorCobrar
                 entities.TRANSACCION.Add(transaccion);
             }
 
+
+            
             transaccion.Tipo_movimiento = cbxTipoMov.Text;
             transaccion.TIPO_DOCUMENTO = (TIPO_DOCUMENTO) cbxIDTipo.SelectedItem;
             transaccion.Num_documento = int.Parse(txtNro_doc.Text);

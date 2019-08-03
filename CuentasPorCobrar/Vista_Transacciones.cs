@@ -32,7 +32,7 @@ namespace CuentasPorCobrar
             if (dgvTransacciones.SelectedRows.Count > 0)
 			{
 				int id = int.Parse(dgvTransacciones.SelectedRows[0].Cells["ID_transaccion"].Value.ToString());
-				transaccion = entities.TRANSACCION.First(x => x.ID_transaccion == id);
+				transaccion = tran.entities.TRANSACCION.First(x => x.ID_transaccion == id);
 			}
 			tran.transaccion = transaccion;
 			tran.Show();
