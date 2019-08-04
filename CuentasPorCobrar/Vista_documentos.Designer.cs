@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Vista_documentos));
             this.labelVistaDocs = new System.Windows.Forms.Label();
             this.DgvDocumentos = new System.Windows.Forms.DataGridView();
             this.buttonEditar = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbxVistaDocs = new System.Windows.Forms.ComboBox();
             this.textBoxVistaDocs = new System.Windows.Forms.TextBox();
+            this.cmdExportar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDocumentos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,11 +130,23 @@
             this.textBoxVistaDocs.TabIndex = 8;
             this.textBoxVistaDocs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxVistaDocs_KeyPress);
             // 
+            // cmdExportar
+            // 
+            this.cmdExportar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdExportar.BackgroundImage")));
+            this.cmdExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdExportar.Location = new System.Drawing.Point(665, 296);
+            this.cmdExportar.Name = "cmdExportar";
+            this.cmdExportar.Size = new System.Drawing.Size(75, 70);
+            this.cmdExportar.TabIndex = 11;
+            this.cmdExportar.UseVisualStyleBackColor = true;
+            this.cmdExportar.Click += new System.EventHandler(this.cmdExportar_Click);
+            // 
             // Vista_documentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 378);
+            this.Controls.Add(this.cmdExportar);
             this.Controls.Add(this.textBoxVistaDocs);
             this.Controls.Add(this.cbxVistaDocs);
             this.Controls.Add(this.label1);
@@ -162,5 +176,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbxVistaDocs;
         private System.Windows.Forms.TextBox textBoxVistaDocs;
+        private System.Windows.Forms.Button cmdExportar;
     }
 }

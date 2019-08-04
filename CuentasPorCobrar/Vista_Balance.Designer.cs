@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Vista_Balance));
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -39,6 +40,7 @@
             this.cbxVistaBalance = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonBuscarBalance = new System.Windows.Forms.Button();
+            this.cmdExportar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBalance)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -159,11 +161,23 @@
             this.buttonBuscarBalance.UseVisualStyleBackColor = true;
             this.buttonBuscarBalance.Click += new System.EventHandler(this.buttonBuscarBalance_Click);
             // 
+            // cmdExportar
+            // 
+            this.cmdExportar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdExportar.BackgroundImage")));
+            this.cmdExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdExportar.Location = new System.Drawing.Point(607, 197);
+            this.cmdExportar.Name = "cmdExportar";
+            this.cmdExportar.Size = new System.Drawing.Size(75, 65);
+            this.cmdExportar.TabIndex = 8;
+            this.cmdExportar.UseVisualStyleBackColor = true;
+            this.cmdExportar.Click += new System.EventHandler(this.cmdExportar_Click);
+            // 
             // Vista_Balance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 428);
+            this.Controls.Add(this.cmdExportar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Vista_Balance";
@@ -191,5 +205,6 @@
         private System.Windows.Forms.ComboBox cbxVistaBalance;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonBuscarBalance;
+        private System.Windows.Forms.Button cmdExportar;
     }
 }

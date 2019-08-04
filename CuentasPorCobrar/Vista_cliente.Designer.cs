@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Vista_cliente));
             this.DgvClientes = new System.Windows.Forms.DataGridView();
             this.buttonBorrar = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.textBoxBuscar = new System.Windows.Forms.TextBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmdExportar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,11 +139,23 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Criterio";
             // 
+            // cmdExportar
+            // 
+            this.cmdExportar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdExportar.BackgroundImage")));
+            this.cmdExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdExportar.Location = new System.Drawing.Point(653, 222);
+            this.cmdExportar.Name = "cmdExportar";
+            this.cmdExportar.Size = new System.Drawing.Size(75, 70);
+            this.cmdExportar.TabIndex = 10;
+            this.cmdExportar.UseVisualStyleBackColor = true;
+            this.cmdExportar.Click += new System.EventHandler(this.cmdExportar_Click);
+            // 
             // Vista_cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 280);
+            this.ClientSize = new System.Drawing.Size(800, 314);
+            this.Controls.Add(this.cmdExportar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.textBoxBuscar);
@@ -173,5 +187,6 @@
         private System.Windows.Forms.TextBox textBoxBuscar;
         private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button cmdExportar;
     }
 }

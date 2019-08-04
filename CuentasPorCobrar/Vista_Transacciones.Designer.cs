@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Vista_Transacciones));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -39,6 +40,7 @@
             this.cbxVistaTransc = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonBuscarVista = new System.Windows.Forms.Button();
+            this.cmdExportar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransacciones)).BeginInit();
             this.panel2.SuspendLayout();
@@ -160,11 +162,23 @@
             this.buttonBuscarVista.UseVisualStyleBackColor = true;
             this.buttonBuscarVista.Click += new System.EventHandler(this.buttonBuscarVista_Click);
             // 
+            // cmdExportar
+            // 
+            this.cmdExportar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdExportar.BackgroundImage")));
+            this.cmdExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdExportar.Location = new System.Drawing.Point(622, 211);
+            this.cmdExportar.Name = "cmdExportar";
+            this.cmdExportar.Size = new System.Drawing.Size(75, 70);
+            this.cmdExportar.TabIndex = 11;
+            this.cmdExportar.UseVisualStyleBackColor = true;
+            this.cmdExportar.Click += new System.EventHandler(this.cmdExportar_Click);
+            // 
             // Vista_Transacciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 446);
+            this.Controls.Add(this.cmdExportar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Vista_Transacciones";
@@ -192,5 +206,6 @@
         private System.Windows.Forms.Button buttonBuscarVista;
         private System.Windows.Forms.ComboBox cbxVistaTransc;
         private System.Windows.Forms.TextBox txtBoxVistaTransc;
+        private System.Windows.Forms.Button cmdExportar;
     }
 }

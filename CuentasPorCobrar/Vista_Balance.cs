@@ -98,5 +98,40 @@ namespace CuentasPorCobrar
         {
             
         }
+
+        private void cmdExportar_Click(object sender, EventArgs e)
+        {
+            DateTime today = DateTime.Today;
+
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel.Worksheet worsheet = null;
+            worsheet = workbook.Sheets["Hoja1"];
+            worsheet = workbook.ActiveSheet;
+            worsheet.Name = "Reporte Cuentas por Cobrar";
+
+            for (int i = 1; i < dgvBalance.Columns.Count + 1; i++)
+            {
+                worsheet.Cells[1, i] = dgvBalance.Columns[i - 1].HeaderText;
+            }
+
+            for (int i = 0; i < dgvBalance.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgvBalance.Columns.Count; j++)
+                {
+                    worsheet.Cells[i + 2, j + 1] = dgvBalance.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+
+            var saveFileDialoge = new SaveFileDialog();
+            saveFileDialoge.FileName = "Reporte balance " + today.ToString("dd-MM-yyyy");
+            saveFileDialoge.DefaultExt = ".xlsx";
+
+            if (saveFileDialoge.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(saveFileDialoge.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            }
+            app.Quit();
+        }
     }
 }

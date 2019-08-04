@@ -38,6 +38,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -113,6 +117,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes CxC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes CxC.Designer.cs">
+      <DependentUpon>Reportes CxC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ROLES.cs">
       <DependentUpon>Cuentas_por_cobrarEntities.tt</DependentUpon>
     </Compile>
@@ -177,6 +187,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reportes CxC.resx">
+      <DependentUpon>Reportes CxC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista_Balance.resx">
       <DependentUpon>Vista_Balance.cs</DependentUpon>
     </EmbeddedResource>
