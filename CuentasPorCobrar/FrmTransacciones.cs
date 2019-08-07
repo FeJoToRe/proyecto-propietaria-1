@@ -77,9 +77,9 @@ namespace CuentasPorCobrar
 
             BALANCE balance = entities.BALANCE.First(b => b.ID_cliente == transaccion.CLIENTE.ID_cliente);
             //seleccion de la operacion 
-            if (cbxTipoMov.SelectedItem.ToString() == "Debito")
+            if (cbxTipoMov.SelectedItem.ToString() == "Credito")
             {
-                if (balance.Monto < transaccion.Monto)      //debito resta 
+                if (balance.Monto < transaccion.Monto)      
                 {
                     MessageBox.Show("balance insuficiente");
                 }
@@ -93,7 +93,7 @@ namespace CuentasPorCobrar
                     this.Close();
                 }
             }
-            else if (cbxTipoMov.SelectedItem.ToString() == "Credito")       //credito suma
+            else if (cbxTipoMov.SelectedItem.ToString() == "Debito")       
             {
                 
                     balance.Monto += transaccion.Monto;
