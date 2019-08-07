@@ -33,7 +33,7 @@ namespace CuentasPorCobrar
 
             txtFecha.Text = DateTime.Today.ToString("dd/MM/yyyy");
 		}
-
+        //
 		private void TextBox1_TextChanged(object sender, EventArgs e)
 		{
 
@@ -67,8 +67,6 @@ namespace CuentasPorCobrar
                 transaccion = new TRANSACCION();
                 entities.TRANSACCION.Add(transaccion);
             }
-
-
             
             transaccion.Tipo_movimiento = cbxTipoMov.Text;
             transaccion.TIPO_DOCUMENTO = (TIPO_DOCUMENTO) cbxIDTipo.SelectedItem;
@@ -76,11 +74,37 @@ namespace CuentasPorCobrar
             transaccion.CLIENTE = (CLIENTE) cbxIDCliente.SelectedItem;
             transaccion.Monto = decimal.Parse(txtMonto.Text);
             transaccion.Fecha = DateTime.ParseExact (txtFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-			
-			entities.SaveChanges();
-			MessageBox.Show("Datos guardados con exito");
-			vt.Show();
-			this.Close();
+
+            BALANCE balance = entities.BALANCE.First(b => b.ID_cliente == transaccion.CLIENTE.ID_cliente);
+            //seleccion de la operacion 
+            if (cbxTipoMov.SelectedItem.ToString() == "Debito")
+            {
+                if (balance.Monto < transaccion.Monto)      //debito resta 
+                {
+                    MessageBox.Show("balance insuficiente");
+                }
+                else
+                {
+
+                    balance.Monto -= transaccion.Monto;
+                    entities.SaveChanges();
+                    MessageBox.Show("Datos guardados con exito");
+                    vt.Show();
+                    this.Close();
+                }
+            }
+            else if (cbxTipoMov.SelectedItem.ToString() == "Credito")       //credito suma
+            {
+                
+                    balance.Monto += transaccion.Monto;
+                    entities.SaveChanges();
+                    MessageBox.Show("Datos guardados con exito");
+                    vt.Show();
+                    this.Close();
+                
+            }
+
+           
 		}
 
 		private void SalirTransc_Click(object sender, EventArgs e)

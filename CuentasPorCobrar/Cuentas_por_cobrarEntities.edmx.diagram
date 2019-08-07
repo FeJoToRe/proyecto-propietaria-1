@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a140fb9f77c8495f954f44e22b65a802" Name="Diagram1">
+      <Diagram DiagramId="a140fb9f77c8495f954f44e22b65a802" Name="Diagram1" ZoomLevel="73">
         <EntityTypeShape EntityType="Cuentas_por_cobrarModel.BALANCE" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Cuentas_por_cobrarModel.CLIENTE" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Cuentas_por_cobrarModel.ROLES" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />

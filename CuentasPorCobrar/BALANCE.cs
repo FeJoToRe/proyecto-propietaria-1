@@ -15,12 +15,16 @@ namespace CuentasPorCobrar
 
     public partial class BALANCE
     {
+        [Browsable(false)]
+        [DisplayName ("ID cliente")]
         public int ID_cliente { get; set; }
+        [DisplayName("ID cliente")]
         public System.DateTime Fecha_corte { get; set; }
         public decimal Monto { get; set; }
+        [DisplayName("ID balance")]
         public int ID_balance { get; set; }
 
-        [Browsable(false)]
+        
         public virtual CLIENTE CLIENTE { get; set; }
     }
 }

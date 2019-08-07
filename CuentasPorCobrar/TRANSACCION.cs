@@ -15,17 +15,24 @@ namespace CuentasPorCobrar
 
     public partial class TRANSACCION
     {
+
+        [DisplayName("ID transaccion")]
         public int ID_transaccion { get; set; }
+        [DisplayName("Tipo movimiento")]
         public string Tipo_movimiento { get; set; }
+        [DisplayName("ID documento")]
         public int ID_documento { get; set; }
+        [DisplayName("Numero documento")]
         public int Num_documento { get; set; }
         public System.DateTime Fecha { get; set; }
+        [DisplayName("ID cliente")]
         public int ID_cliente { get; set; }
         public decimal Monto { get; set; }
-    
-        [Browsable (false)]
+        
+        
         public virtual CLIENTE CLIENTE { get; set; }
         [Browsable(false)]
         public virtual TIPO_DOCUMENTO TIPO_DOCUMENTO { get; set; }
+       
     }
 }

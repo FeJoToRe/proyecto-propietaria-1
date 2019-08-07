@@ -20,13 +20,13 @@ namespace CuentasPorCobrar
         {
             this.TRANSACCION = new HashSet<TRANSACCION>();
         }
-    
+
+        [DisplayName("ID documento")]
         public int ID_documento { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
 
         [Browsable(false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRANSACCION> TRANSACCION { get; set; }
     }
 }

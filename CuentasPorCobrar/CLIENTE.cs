@@ -15,24 +15,29 @@ namespace CuentasPorCobrar
 
     public partial class CLIENTE
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public CLIENTE()
         {
+
             this.BALANCE = new HashSet<BALANCE>();
             this.TRANSACCION = new HashSet<TRANSACCION>();
         }
-    
+
+        [DisplayName("ID cliente")]
         public int ID_cliente { get; set; }
         public string Nombre { get; set; }
         public string Cedula { get; set; }
+        [DisplayName("Limite crédito")]
         public decimal Limite_credito { get; set; }
         public bool Estado { get; set; }
 
         [Browsable(false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BALANCE> BALANCE { get; set; }
         [Browsable(false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRANSACCION> TRANSACCION { get; set; }
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

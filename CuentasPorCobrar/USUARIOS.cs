@@ -15,13 +15,16 @@ namespace CuentasPorCobrar
 
     public partial class USUARIOS
     {
+
+        [DisplayName("ID usuario")]
         public int ID_usuario { get; set; }
         public string Usuario { get; set; }
         public string Clave { get; set; }
         public string Estado { get; set; }
+        [DisplayName("ID rol")]
         public int ID_rol { get; set; }
+    
 
-        [Browsable(false)]
         public virtual ROLES ROLES { get; set; }
     }
 }

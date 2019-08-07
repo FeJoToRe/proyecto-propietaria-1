@@ -20,11 +20,11 @@ namespace CuentasPorCobrar
         {
             this.USUARIOS = new HashSet<USUARIOS>();
         }
-    
+
+        [DisplayName("ID rol")]
         public int ID_rol { get; set; }
         public string Nombre { get; set; }
-
-        [Browsable(false)]
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIOS> USUARIOS { get; set; }
     }

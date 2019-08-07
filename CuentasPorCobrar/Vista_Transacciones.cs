@@ -18,7 +18,7 @@ namespace CuentasPorCobrar
 			InitializeComponent();
 		}
 		//editar transacciones 
-		private void btnEditar_Click(object sender, EventArgs e)
+		/*private void btnEditar_Click(object sender, EventArgs e)
 		{
 			FrmTransaccion tran = new FrmTransaccion();
 			TRANSACCION transaccion = null;
@@ -37,7 +37,7 @@ namespace CuentasPorCobrar
 			tran.transaccion = transaccion;
 			tran.Show();
 			this.Close();
-		}
+		}*/
 		//agregar transacciones
 		private void btnAgregar_Click(object sender, EventArgs e)
 		{
@@ -51,7 +51,7 @@ namespace CuentasPorCobrar
 			dgvTransacciones.DataSource = entities.TRANSACCION.Select(x => x).ToList();
 		}
 		//eliminar transacciones
-		private void btnEliminar_Click(object sender, EventArgs e)
+		/*private void btnEliminar_Click(object sender, EventArgs e)
 		{
             if (!Validaciones.ValidarAdmin())
             {
@@ -67,7 +67,7 @@ namespace CuentasPorCobrar
 				entities.SaveChanges();
 				Vista_Transacciones_Load(sender, e);
 			}
-		}
+		}*/
 
         private void buttonBuscarVista_Click(object sender, EventArgs e)
         {
@@ -138,5 +138,7 @@ namespace CuentasPorCobrar
             }
             app.Quit();
         }
+
+        
     }
 }
