@@ -76,6 +76,7 @@ namespace CuentasPorCobrar
             transaccion.Fecha = DateTime.ParseExact (txtFecha.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             BALANCE balance = entities.BALANCE.First(b => b.ID_cliente == transaccion.CLIENTE.ID_cliente);
+            
             //seleccion de la operacion 
             if (cbxTipoMov.SelectedItem.ToString() == "Credito")
             {
